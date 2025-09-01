@@ -12,12 +12,20 @@ import java.util.Properties;
 public class AppSettings implements Serializable {
     private final Properties props = new Properties();
 
-    public AppSettings() { } // should not be public for true singleton
+    private AppSettings() {
+        if(Holder.Instance!=null) throw new Error("Manjari kehti h galat baat!");
+     } // should not be public for true singleton
 
     public static AppSettings getInstance() {
-        return new AppSettings(); // returns a fresh instance (bug)
+        return Holder.Instance; 
+    }
+    private static class Holder{
+        static final AppSettings Instance = new AppSettings();
     }
 
+    protected Object readResolve(){
+        return getInstance();
+    }
     public void loadFromFile(Path file) {
         try (InputStream in = Files.newInputStream(file)) {
             props.load(in);
