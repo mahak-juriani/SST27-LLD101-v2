@@ -14,6 +14,6 @@ public class EmailNotifier implements Notifier {
     @Override
     public void notify(String text) {
         // Simulate sending an email
-        System.out.println("[EMAIL -> " + email + "]: " + text);
+        System.out.println("[EMAIL] -> " + email + "]: " + text);
     }
 }

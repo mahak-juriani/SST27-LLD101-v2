@@ -7,7 +7,10 @@ public class Client {
 
 		
 		Beverage coffee = new Cappuccino();
-        System.out.println("Coffee");
+		System.out.println("Coffee");
+		System.out.println(coffee.cost());
+		coffee = new EspressoShot(coffee);
+        System.out.println("coffee with shot");
 		System.out.println(coffee.cost());
 		
 		
